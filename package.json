@@ -32,9 +32,7 @@
     "build:analyze": "ANALYZE=true next build",
     "build:docker": "DOCKER=true next build && npm run build-sitemap",
     "dev": "next dev -p 3010",
-    "docs": "lobe-i18n md && npm run workflow:docs",
     "i18n": "npm run workflow:i18n && lobe-i18n",
-    "i18n:docs": "lobe-i18n md && npm run workflow:docs",
     "lint": "npm run lint:ts && npm run lint:style && npm run type-check && npm run lint:circular",
     "lint:circular": "dpdm src/**/*.ts  --warning false  --tree false  --exit-code circular:1  -T true",
     "lint:md": "remark . --quiet --frail --output",
@@ -50,9 +48,7 @@
     "test:coverage": "vitest run --coverage",
     "test:update": "vitest -u",
     "type-check": "tsc --noEmit",
-    "workflow:docs": "tsx scripts/docsWorkflow/index.ts",
-    "workflow:i18n": "tsx scripts/i18nWorkflow/index.ts",
-    "workflow:readme": "tsx scripts/readmeWorkflow/index.ts"
+    "workflow:i18n": "tsx scripts/i18nWorkflow/index.ts"
   },
   "lint-staged": {
     "*.md": [
