@@ -1,23 +1,19 @@
 import { ActionIcon, DiscordIcon, Icon } from '@lobehub/ui';
 import { Badge, ConfigProvider, Dropdown, MenuProps } from 'antd';
 import {
-  Book,
-  Feather,
   FileClock,
-  Github,
   HardDriveDownload,
   HardDriveUpload,
   Heart,
   Settings,
   Settings2,
 } from 'lucide-react';
-import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import { memo } from 'react';
 import { useTranslation } from 'react-i18next';
 import { Flexbox } from 'react-layout-kit';
 
-import { ABOUT, CHANGELOG, DISCORD, DOCUMENTS, FEEDBACK, GITHUB } from '@/const/url';
+import { ABOUT, CHANGELOG, DISCORD } from '@/const/url';
 import DataImporter from '@/features/DataImporter';
 import { configService } from '@/services/config';
 import { GlobalStore, useGlobalStore } from '@/store/global';
@@ -78,12 +74,6 @@ const BottomActions = memo<BottomActionProps>(({ tab }) => {
       type: 'divider',
     },
     {
-      icon: <Icon icon={Feather} />,
-      key: 'feedback',
-      label: t('feedback'),
-      onClick: () => window.open(FEEDBACK, '__blank'),
-    },
-    {
       icon: <Icon icon={FileClock} />,
       key: 'changelog',
       label: t('changelog'),
@@ -119,14 +109,7 @@ const BottomActions = memo<BottomActionProps>(({ tab }) => {
   ];
 
   return (
-    <>
-      <Link aria-label={'GitHub'} href={GITHUB} target={'_blank'}>
-        <ActionIcon icon={Github} placement={'right'} title={'GitHub'} />
-      </Link>
-      <Link aria-label={t('document')} href={DOCUMENTS} target={'_blank'}>
-        <ActionIcon icon={Book} placement={'right'} title={t('document')} />
-      </Link>
-      <Dropdown arrow={false} menu={{ items }} trigger={['click']}>
+    <Dropdown arrow={false} menu={{ items }} trigger={['click']}>
         {hasNewVersion ? (
           <Flexbox>
             <ConfigProvider theme={{ components: { Badge: { dotSize: 8 } } }}>
@@ -139,7 +122,6 @@ const BottomActions = memo<BottomActionProps>(({ tab }) => {
           <ActionIcon active={tab === SidebarTabKey.Setting} icon={Settings2} />
         )}
       </Dropdown>
-    </>
   );
 });
 

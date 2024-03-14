@@ -1,7 +1,7 @@
 {
-  "name": "@lobehub/chat",
-  "version": "0.134.0",
-  "description": "Lobe Chat - an open-source, high-performance chatbot framework that supports speech synthesis, multimodal, and extensible Function Call plugin system. Supports one-click free deployment of your private ChatGPT/LLM web application.",
+  "name": "duola-chat",
+  "version": "0.1.0",
+  "description": "duola-chat",
   "keywords": [
     "framework",
     "chatbot",
@@ -14,16 +14,9 @@
     "tts",
     "stt"
   ],
-  "homepage": "https://github.com/lobehub/lobe-chat",
-  "bugs": {
-    "url": "https://github.com/lobehub/lobe-chat/issues/new/choose"
-  },
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/lobehub/lobe-chat.git"
-  },
-  "license": "MIT",
-  "author": "LobeHub <i@lobehub.com>",
+  "homepage": "https://www.kaka996.com/",
+  "license": "AGPL-3.0-only",
+  "author": "DuoLa <530353222@qq.com>",
   "sideEffects": false,
   "scripts": {
     "build": "next build",
@@ -199,9 +192,5 @@
     "vite": "5.1.5",
     "vitest": "~1.2.2",
     "vitest-canvas-mock": "^0.3"
-  },
-  "publishConfig": {
-    "access": "public",
-    "registry": "https://registry.npmjs.org"
   }
 }

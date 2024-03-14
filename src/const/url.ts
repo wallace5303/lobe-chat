@@ -1,6 +1,5 @@
 import urlJoin from 'url-join';
 
-import { getClientConfig } from '@/config/client';
 import { withBasePath } from '@/utils/basePath';
 
 import pkg from '../../package.json';
@@ -13,16 +12,11 @@ export const getCanonicalUrl = (path: string) => urlJoin(OFFICIAL_URL, path);
 export const GITHUB = pkg.homepage;
 export const CHANGELOG = urlJoin(GITHUB, 'blob/master/CHANGELOG.md');
 
-const { LOBE_CHAT_DOCS } = getClientConfig();
-
-export const DOCUMENTS = !!LOBE_CHAT_DOCS ? '/docs' : 'https://chat-docs.lobehub.com';
-
 export const WIKI_PLUGIN_GUIDE = urlJoin(GITHUB, 'wiki', 'Plugin-Development');
 
 export const MANUAL_UPGRADE_URL = urlJoin(GITHUB, 'wiki', 'Upstream-Sync');
 
 export const ABOUT = pkg.homepage;
-export const FEEDBACK = pkg.bugs.url;
 export const DISCORD = 'https://discord.gg/AYFPHvv2jT';
 export const PRIVACY_URL = 'https://lobehub.com/privacy';
 
