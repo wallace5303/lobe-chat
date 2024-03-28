@@ -1,25 +1,14 @@
-import nextPWA from '@ducanh2912/next-pwa';
 import analyzer from '@next/bundle-analyzer';
 
 const isProd = process.env.NODE_ENV === 'production';
-const buildWithDocker = process.env.DOCKER === 'true';
 
 // if you need to proxy the api endpoint to remote server
 const API_PROXY_ENDPOINT = process.env.API_PROXY_ENDPOINT || '';
 
 const basePath = process.env.NEXT_PUBLIC_BASE_PATH;
-const docsBasePath = process.env.NEXT_PUBLIC_LOBE_CHAT_DOCS || '';
 
 const withBundleAnalyzer = analyzer({
   enabled: process.env.ANALYZE === 'true',
-});
-
-const withPWA = nextPWA({
-  dest: 'public',
-  register: true,
-  workboxOptions: {
-    skipWaiting: true,
-  },
 });
 
 /** @type {import('next').NextConfig} */
@@ -49,16 +38,13 @@ const nextConfig = {
     ],
     unoptimized: !isProd,
   },
-  output: buildWithDocker ? 'standalone' : undefined,
+  //output: buildWithDocker ? 'standalone' : undefined,
+  output: "export",
 
   rewrites: async () => [
     // due to google api not work correct in some countries
     // we need a proxy to bypass the restriction
     { source: '/api/chat/google', destination: `${API_PROXY_ENDPOINT}/api/chat/google` },
-    { source: '/docs', destination: `${docsBasePath}/docs` },
-    { source: '/docs/zh', destination: `${docsBasePath}/docs/zh` },
-    { source: '/docs/en', destination: `${docsBasePath}/docs/en` },
-    { source: '/docs/:path*', destination: `${docsBasePath}/docs/:path*` },
   ],
   reactStrictMode: true,
 
@@ -82,4 +68,4 @@ const nextConfig = {
   },
 };
 
-export default isProd ? withBundleAnalyzer(withPWA(nextConfig)) : nextConfig;
+export default isProd ? withBundleAnalyzer(nextConfig) : nextConfig;
