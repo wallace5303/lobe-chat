@@ -27,7 +27,7 @@ const RootLayout = ({ children }: PropsWithChildren) => {
   const direction = 'ltr';
 
   return (
-    <html dir={direction} lang={lang?.value || DEFAULT_LANG} suppressHydrationWarning>
+    <html dir={direction} lang={lang?.value || DEFAULT_LANG} suppressHydrationWarning={true}>
       <body>
         <StyleRegistry>
           <Layout
