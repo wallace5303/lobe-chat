@@ -11,8 +11,7 @@ import {
 import { useGlobalStore } from '@/store/global';
 import { settingsSelectors } from '@/store/global/selectors';
 import { GlobalStyle } from '@/styles';
-import { setCookie } from '@/utils/cookie';
-
+import { setString } from '@/utils/store';
 export interface AppThemeProps {
   children?: ReactNode;
   defaultAppearance?: ThemeAppearance;
@@ -33,11 +32,11 @@ const AppTheme = memo<AppThemeProps>(
     ]);
 
     useEffect(() => {
-      setCookie(LOBE_THEME_PRIMARY_COLOR, primaryColor);
+      setString(LOBE_THEME_PRIMARY_COLOR, primaryColor);
     }, [primaryColor]);
 
     useEffect(() => {
-      setCookie(LOBE_THEME_NEUTRAL_COLOR, neutralColor);
+      setString(LOBE_THEME_NEUTRAL_COLOR, neutralColor);
     }, [neutralColor]);
 
     return (
@@ -48,7 +47,7 @@ const AppTheme = memo<AppThemeProps>(
         }}
         defaultAppearance={defaultAppearance}
         onAppearanceChange={(appearance) => {
-          setCookie(LOBE_THEME_APPEARANCE, appearance);
+          setString(LOBE_THEME_APPEARANCE, appearance);
         }}
         themeMode={themeMode}
       >

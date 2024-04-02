@@ -1,5 +1,5 @@
 import { ResolvingViewport } from 'next';
-import { cookies } from 'next/headers';
+import storage from 'store2';
 import { PropsWithChildren } from 'react';
 
 import Analytics from '@/components/Analytics';
@@ -19,11 +19,11 @@ const { ENABLE_OAUTH_SSO } = getServerConfig();
 
 const RootLayout = ({ children }: PropsWithChildren) => {
   // get default theme config to use with ssr
-  const cookieStore = cookies();
-  const appearance = cookieStore.get(LOBE_THEME_APPEARANCE);
-  const neutralColor = cookieStore.get(LOBE_THEME_NEUTRAL_COLOR);
-  const primaryColor = cookieStore.get(LOBE_THEME_PRIMARY_COLOR);
-  const lang = cookieStore.get(LOBE_LOCALE_COOKIE);
+  const appearance = storage.get(LOBE_THEME_APPEARANCE);
+  const neutralColor = storage.get(LOBE_THEME_NEUTRAL_COLOR);
+  const primaryColor = storage.get(LOBE_THEME_PRIMARY_COLOR);
+  const lang = storage.get(LOBE_LOCALE_COOKIE);
+
   const direction = 'ltr';
 
   return (
