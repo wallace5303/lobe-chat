@@ -36,7 +36,7 @@ const nextConfig = {
     unoptimized: !isProd,
   },
   //output: buildWithDocker ? 'standalone' : undefined,
-  output: undefined,
+  output: "export",
 
   reactStrictMode: true,
 
